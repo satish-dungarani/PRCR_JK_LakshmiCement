@@ -1,0 +1,166 @@
+Time: 23/06/2020 09:10:48 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 09:13:59 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:31:16 PM
+-----------------------------------------------------------
+Message: Mailbox unavailable. The server response was: 5.1.1 <MOHANPALIWAL@UCWL.JKMAIL.COM>: Recipient address rejected: User unknown in virtual alias table
+StackTrace:    at PRCR.Models.CommonServices.send_mail_to_vendor_otp(String toEmail, String subject, String body, String[] ccEmails) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 1626
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 244
+Source: PRCR
+TargetSite: Void send_mail_to_vendor_otp(System.String, System.String, System.String, System.String[])
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:31:17 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:35:45 PM
+-----------------------------------------------------------
+Message: An invalid character was found in the mail header: ','.
+StackTrace:    at PRCR.Models.CommonServices.send_mail_to_vendor_otp(String toEmail, String subject, String body, String[] ccEmails) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 1626
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 244
+Source: PRCR
+TargetSite: Void send_mail_to_vendor_otp(System.String, System.String, System.String, System.String[])
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:35:45 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:42:40 PM
+-----------------------------------------------------------
+Message: Mailbox unavailable. The server response was: 5.1.1 <MOHANPALIWAL@LC.JKMAIL.COM>: Recipient address rejected: User unknown in virtual alias table
+StackTrace:    at PRCR.Models.CommonServices.send_mail_to_vendor_otp(String toEmail, String subject, String body, String[] ccEmails) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 1626
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 244
+Source: System
+TargetSite: Void Send(System.Net.Mail.MailMessage)
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:42:40 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: System
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:47:06 PM
+-----------------------------------------------------------
+Message: Mailbox unavailable. The server response was: 5.1.1 <MOHANPALIWAL@UCWL.JKMAIL.COM>: Recipient address rejected: User unknown in virtual alias table
+StackTrace:    at PRCR.Models.CommonServices.send_mail_to_vendor_otp(String toEmail, String subject, String body, String[] ccEmails) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 1626
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 243
+Source: PRCR
+TargetSite: Void send_mail_to_vendor_otp(System.String, System.String, System.String, System.String[])
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:47:06 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:55:38 PM
+-----------------------------------------------------------
+Message: Service not available, closing transmission channel. The server response was: 4.4.2 mail.lc.jkmail.com Error: timeout exceeded
+StackTrace:    at PRCR.Models.CommonServices.send_mail_to_vendor_otp(String toEmail, String subject, String body, String[] ccEmails) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 1626
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 243
+Source: PRCR
+TargetSite: Void send_mail_to_vendor_otp(System.String, System.String, System.String, System.String[])
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:55:38 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:56:25 PM
+-----------------------------------------------------------
+Message: Mailbox unavailable. The server response was: 5.1.1 <MOHANPALIWAL@UCWL.JKMAIL.COM>: Recipient address rejected: User unknown in virtual alias table
+StackTrace:    at PRCR.Models.CommonServices.send_mail_to_vendor_otp(String toEmail, String subject, String body, String[] ccEmails) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 1626
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 223
+Source: PRCR
+TargetSite: Void send_mail_to_vendor_otp(System.String, System.String, System.String, System.String[])
+-----------------------------------------------------------
+
+Time: 23/06/2020 10:56:25 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 11:36:56 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 11:37:09 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 11:37:11 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 11:37:13 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 11:39:43 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 23/06/2020 11:39:49 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+

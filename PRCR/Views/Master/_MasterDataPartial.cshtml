@@ -1,0 +1,205 @@
+﻿@using PRCR.Models;
+@model MasterModel
+
+@using (Ajax.BeginForm("SaveMaster", "Master", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnBegin = "funMasterBegin",
+    OnSuccess = "funMasterSuccess",
+    OnFailure = "funMasterFailure",
+    OnComplete = "funMasterComplete"
+}, new { @class = "", id = "frmMaster" }))
+{
+    if (Model.MasterType != null)
+    {
+    @Html.HiddenFor(model => model.MasterType)
+        if (Model.MasterType.ToLower() == "lo")
+        {
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Location</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(model => model.LocationId)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Code</label><span class="red">*</span>
+                    @Html.TextBoxFor(model => model.LocationCode, new { @class = "form-control", required = true, @maxlength = "8" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Location Name</label><span class="red">*</span>
+                    @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control", required = true, @maxlength = "18" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Description</label>
+                    @Html.TextAreaFor(model => model.LocationDesc, new { @class = "form-control", rows = 3, @maxlength = "195" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Save</button>
+        <a href="@Url.Action("MasterList", "Master", new { type = "LO" })" class="btn btn-danger" data-dismiss="modal">Close</a>
+    </div>
+        }
+        else if (Model.MasterType.ToLower() == "ap")
+        {
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Application</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(model => model.ApplicationId)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Application Name</label><span class="red">*</span>
+                    @Html.TextBoxFor(model => model.ApplicationName, new { @class = "form-control", required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Save</button>
+        <a href="@Url.Action("MasterList", "Master", new { type = "AP" })" class="btn btn-danger" data-dismiss="modal">Close</a>
+    </div>
+        }
+        else if (Model.MasterType.ToLower() == "mo")
+        {
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Module</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(model => model.ModuleId)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Application Name</label><span class="red">*</span>
+                    @Html.DropDownListFor(model => model.ApplicationId,
+                    new SelectList((List<SelectListItem>)CommonServices.GetApplicationList(), "Value", "Text", Model.ApplicationId == 0 ? "" : Model.ApplicationId.ToString()), "--Select--", new { @class = "form-control select2", required = true })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Module Name</label><span class="red">*</span>
+                    @Html.TextBoxFor(model => model.ModuleName, new { @class = "form-control", required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Save</button>
+        <a href="@Url.Action("MasterList", "Master", new { type = "MO" })" class="btn btn-danger" data-dismiss="modal">Close</a>
+    </div>
+        }
+        else if (Model.MasterType.ToLower() == "pr")
+        {
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Priority</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(model => model.PriorityId)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Priority</label><span class="red">*</span>
+                    @Html.TextBoxFor(model => model.Priority, new { @class = "form-control", required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Save</button>
+        <a href="@Url.Action("MasterList", "Master", new { type = "PR" })" class="btn btn-danger" data-dismiss="modal">Close</a>
+    </div>
+        }
+        else if (Model.MasterType.ToLower() == "dt")
+        {
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Document Type</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(model => model.DocumentTypeId)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Document Type</label><span class="red">*</span>
+                    @Html.TextBoxFor(model => model.DocumentType, new { @class = "form-control", required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Save</button>
+        <a href="@Url.Action("MasterList", "Master", new { type = "DT" })" class="btn btn-danger" data-dismiss="modal">Close</a>
+    </div>
+        }
+        else if (Model.MasterType.ToLower() == "is")
+        {
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Issue Status</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(model => model.StatusId)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Status</label><span class="red">*</span>
+                    @Html.TextBoxFor(model => model.Status, new { @class = "form-control", required = true })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Save</button>
+        <a href="@Url.Action("MasterList", "Master", new { type = "IS" })" class="btn btn-danger" data-dismiss="modal">Close</a>
+    </div>
+        }
+
+        if (Model.MasterType.ToLower() == "ist")
+        {
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Issue Type</h4>
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(model => model.IssueTypeId)
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Issue Type</label><span class="red">*</span>
+                    @Html.TextBoxFor(model => model.IssueTypeName, new { @class = "form-control", required = true, @maxlength = "195" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Description</label>
+                    @Html.TextAreaFor(model => model.IssueTypeDesc, new { @class = "form-control", rows = 3, @maxlength = "495" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Save</button>
+        <a href="@Url.Action("MasterList", "Master", new { type = "IST" })" class="btn btn-danger" data-dismiss="modal">Close</a>
+    </div>
+        }
+    }
+}

@@ -1,0 +1,128 @@
+Time: 12/06/2020 02:28:49 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:31:34 AM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 103
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:31:34 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:46:17 AM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 103
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:46:17 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:49:38 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:50:02 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:52:58 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:53:36 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:53:42 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:53:44 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:53:54 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:53:58 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 02:57:41 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 03:06:19 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 12/06/2020 03:09:00 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: mscorlib
+TargetSite: 
+-----------------------------------------------------------
+

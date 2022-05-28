@@ -1,0 +1,151 @@
+﻿@using PRCR.Models;
+@model List<UserRoleMappingModel>
+
+@{
+    ViewBag.Title = "Employee Role Mapping";
+    int i = 1;
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Employee Role Mapping List</h3>
+                <button class="btn bg-navy pull-right btnAddUserRole" data-op="ADD">Add</button>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <table id="tblPR" class="table table-bordered table-hover" style="width: 100%;">
+                    <thead>
+                        <tr> 
+                            <th class="text-center">Action</th>
+                            <th>Sr. No.</th>
+                            <th>Employee</th>
+                            <th class="text-center">Is Admin</th>
+                            <th class="text-center">Is Consultant</th>
+                            <th class="text-center">Is IT Developer</th>
+                            <th class="text-center">Is Basis Consultant</th>
+                            <th class="text-center">Is HOD</th>
+                            <th class="text-center">Is End User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                
+                                <td>
+                                    <a href="javascript:void(0);" class="btnAddUserRole" data-op="EDIT" data-urmid ="@item.URMId"><i class="fa fa-pencil margin"></i></a>
+                                    <a href="javascript:void(0);" onclick="funDeleteMaster('userrolemap',@item.URMId)"><i class="fa fa-trash margin"></i></a>
+                                </td>
+                                <td>@(i++)</td>
+                                <td>@item.EmployeeCode - @item.EmployeeName</td>
+                                <td class="text-center">
+                                    @if (item.IsAdmin)
+                                    {
+                                        <i class="fa fa-check-square-o"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-square-o"></i>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    @if (item.IsConsultant)
+                                    {
+                                        <i class="fa fa-check-square-o"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-square-o"></i>
+                                    }</td>
+                                <td class="text-center">
+                                    @if (item.IsITDeveloper)
+                                    {
+                                        <i class="fa fa-check-square-o"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-square-o"></i>
+                                    }</td>
+                                <td class="text-center">
+                                    @if (item.IsBasisConsultant)
+                                    {
+                                        <i class="fa fa-check-square-o"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-square-o"></i>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    @if (item.IsHOD)
+                                    {
+                                        <i class="fa fa-check-square-o"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-square-o"></i>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    @if (item.IsEndUser)
+                                    {
+                                        <i class="fa fa-check-square-o"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-square-o"></i>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+<script>
+
+   @* $(document).ready(function () {
+
+        if ('@TempData["Action"]' != null && '@TempData["Action"]' == 'SAVE') {
+            toastr["success"]("User Role Mapping Inserted Successfully!");
+        }
+        else if ('@TempData["Action"]' != null && '@TempData["Action"]' == 'EDIT') {
+            toastr["success"]("User Role Mapping Updated Successfully!");
+        }
+    });*@
+
+    $(document).on('click', '.btnAddUserRole', function () {
+         
+        var op = $(this).data('op');
+        var urmId = $(this).data('urmid');
+        $.ajax({
+            type: 'get',
+            dataType: 'html',
+            url: '@Url.Action("UserRoleMapping", "Master")' + '?op=' + op + "&urmId=" + urmId,
+            data: {},
+            beforeSend: function () {
+            },
+            success: function (response) {
+                $('#divCommonModalContent').empty();
+                $('#divCommonModalContent').html(response);
+                //Initialize Select2 Elements
+                $('.select2').select2()
+                $('#modal-default').modal('show');
+            },
+            error: function (ex, st, th) {
+            }
+        });
+
+    });
+</script>

@@ -1,0 +1,125 @@
+﻿@using PRCR.Models;
+@model UserRoleMappingModel
+@{
+    ViewBag.Title = "Employee Role Mapping";
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("UserRoleMapping", "Master", new { op = TempData["Action"] }, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnBegin = "funMasterBegin",
+    OnSuccess = "funMasterSuccess",
+    OnFailure = "funMasterFailure",
+    OnComplete = "funMasterComplete"
+}, new { @class = "", id = "frmMaster" }))
+{ 
+ 
+     
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Employee Role Mapping</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Employee</label><span class="red">*</span>
+                    @Html.HiddenFor(model => model.URMId)
+                    @Html.HiddenFor(model => model.EmployeeName)
+
+                    @if (Model.URMId == 0)
+                    {
+                        @Html.DropDownListFor(model => model.EmployeeCode,
+                        new SelectList((List<SelectListItem>)CommonServices.GetEmployeesForRoleMapping(), "Value", "Text", ""), "--Select--",
+                        new { @class = "form-control  select2", required = true })
+                    }
+                    else
+                    {
+                        <label for="" class="form-control" style="height: auto;">
+                            @Html.HiddenFor(model => model.EmployeeCode)
+                            @Model.EmployeeCode - @Model.EmployeeName
+                        </label>
+                    }
+
+                </div>
+                <div class="col-md-12">
+
+                    <div class="col-sm-6 checkbox icheck">
+                        <label>
+                            @Html.CheckBoxFor(model => model.IsAdmin)
+                            Admin
+                        </label>
+                    </div>
+                    <div class="col-sm-6  checkbox icheck" style="margin-top: 10px !important;">
+                        <label>
+                            @Html.CheckBoxFor(model => model.IsConsultant)
+                            Consultant
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    <div class="col-sm-6 checkbox icheck">
+                        <label>
+                            @Html.CheckBoxFor(model => model.IsITDeveloper)
+                            IT
+                        </label>
+                    </div>
+                    <div class="col-sm-6  checkbox icheck" style="margin-top: 10px !important;">
+                        <label>
+                            @Html.CheckBoxFor(model => model.IsBasisConsultant)
+                            Basis
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    <div class="col-sm-6 checkbox icheck">
+                        <label>
+                            @Html.CheckBoxFor(model => model.IsHOD)
+                            HOD
+                        </label>
+                    </div>
+                    <div class="col-sm-6  checkbox icheck" style="margin-top: 10px !important;">
+                        <label>
+                            @Html.CheckBoxFor(model => model.IsEndUser)
+                            End User
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-left">Save</button>
+        <a href="@Url.Action("MasterList", "Master", new { type = "LO" })" class="btn btn-danger" data-dismiss="modal">Close</a>
+    </div>
+     
+}
+
+<script>
+    $(document).on("change", "#EmployeeCode", function () {
+        $("#EmployeeName").val($("#EmployeeCode option:selected").text().split(' - ')[1]);
+    })
+    function funMasterBegin() { }
+    function funMasterSuccess(response) { 
+        if (response != null) {
+            if (response.Status == "Ok") {
+                $('#modal-default').modal('hide');
+                toastr.success(response.Message);
+                setInterval(function () { location.reload(true); }, 2000);
+            }
+            else {
+                toastr.error(response.Message);
+            }
+        }
+        else {
+            toastr.error("Please contact to Administrator and try again later!");
+        }
+
+    }
+    function funMasterFailure(ex, st, th) { }
+    function funMasterComplete() { }
+</script>

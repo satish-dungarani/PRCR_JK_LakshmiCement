@@ -1,0 +1,293 @@
+﻿@using PRCR.Models;
+@model List<RequestModel>
+@{
+    
+    if (ViewBag.UserType == "HOD")
+    {
+        ViewBag.Title = "Pending for approval List";
+    }
+    else
+    {
+        ViewBag.Title = ViewBag.UserType + " Request List";
+    }
+    
+}
+
+
+<style>
+    table.dataTable thead > tr > th:nth-child(1) {
+        width: 50px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(2) {
+        width: 100px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(3) {
+        width: 80px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(4) {
+        width: 150px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(5) {
+        width: 250px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(6) {
+        width: 250px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(7) {
+        width: 250px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(8) {
+        width: 80px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(9) {
+        width: 200px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(10) {
+        width: 80px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(11) {
+        width: 200px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(12) {
+        width: 100px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(13) {
+        width: 250px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(14) {
+        width: 50px;
+    }
+
+    table.dataTable thead > tr > th:nth-child(15) {
+        width: 50px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body">
+                @using (Html.BeginForm("RequestList", "Request", FormMethod.Post, new { @class = "" }))
+                {
+                    <div class="row">
+                        @Html.Hidden("type", (string)ViewBag.UserType)
+                        <div class="col-md-3">
+                            <label>Location</label>
+                            @Html.DropDownList("LocationId", new SelectList(CommonServices.GetLocationList(), "Value", "Text", ""), "--Select--", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col-md-3">
+                            <label>Application</label>
+                            @Html.DropDownList("ApplicationId", new SelectList(CommonServices.GetApplicationList(), "Value", "Text", ""), "--Select--", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col-md-3">
+                            <label>Module</label>
+                            <div id="ddModuleList">
+                                @Html.Partial("_ModuleDDListPartial", new MasterModel())
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Status</label>
+                            @Html.DropDownList("StatusId", new SelectList(CommonServices.GetStatusList(), "Value", "Text", "1"), "--Select--", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col-md-2">
+                            <label>Priority</label>
+                            @Html.DropDownList("PriorityId", new SelectList(CommonServices.GetPriorityList(), "Value", "Text", ""), "--Select--", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col-md-3">
+                            <label>From - To Date</label>
+                            @Html.TextBox("FromToDate", "", new { @class = "form-control", autocomplete = "off" })
+                        </div>
+                        <div class="col-md-3">
+                            <label>Detail Status</label>
+                            @Html.DropDownList("refReqStatusId", new SelectList(CommonServices.GetReqStatusDet(), "Value", "Text", ""), "--Select--", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col-md-3">
+                            <label>Issue Type</label>
+                            @Html.DropDownList("refIssueTypeId", new SelectList(CommonServices.GetIssueTypeList(), "Value", "Text", ""), "--Select--", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary" id="btnSearch" style="margin-top: 40%;"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+
+        <!-- Custom Tabs -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+
+                @if (ViewBag.UserType == "HOD")
+                {
+                    <li class="active"><a href="#tab_2" data-toggle="tab">New Request</a></li>
+                }
+                else
+                {
+                    <li class="active"><a href="#tab_1" data-toggle="tab">Issue/Problem Request</a></li> 
+                    <li><a href="#tab_2" data-toggle="tab">New Request</a></li>
+                }
+
+                @if (ViewBag.UserType == "EU")
+                {
+                    <li class="pull-right">
+                        <button  onclick="location.href='@Url.Action("CreateRequest", "Request", new { type = "CR" })'" type="button" class="btn bg-navy">Create New Request</button></li>                    
+                    <li class="pull-right">
+                        <button onclick="location.href='@Url.Action("CreateRequest", "Request", new { type = "PR" })'" type="button" class="btn bg-navy">Create Issue/Problem Request</button></li>
+                }
+
+            </ul>
+            <div class="tab-content">
+                @{string activecls = "";}
+                @if (ViewBag.UserType != "HOD")
+                {
+                    activecls = "active";
+                }
+                <div class="tab-pane @activecls" id="tab_1">
+                    <div class="table-responsive">
+                        @{
+                            ViewBag.RequestType = "PR";
+                            if (ViewBag.UserType == "EU" || ViewBag.UserType == "UAT")
+                            {
+                                Html.RenderPartial("_RequestListPartial");
+                            }
+                            else if (ViewBag.UserType == "CO")
+                            {
+                                Html.RenderPartial("_CoRequestListPartial");
+                            }
+                            else if (ViewBag.UserType == "IT")
+                            {
+                                Html.RenderPartial("_ItRequestListPartial");
+                            }
+                            else if (ViewBag.UserType == "BASIS")
+                            {
+                                Html.RenderPartial("_BasisRequestListPartial");
+                            }
+                            //else if (ViewBag.UserType == "HOD")
+                            //{
+                            //    Html.RenderPartial("_HODRequestListPartial");
+                            //}
+                            else if (ViewBag.UserType == "ADMIN")
+                            {
+                                Html.RenderPartial("_AdminRequestListPartial");
+                            }
+                        }
+                    </div>
+                </div>
+                <!-- /.tab-pane -->
+                @{activecls = "";}
+                @if (ViewBag.UserType == "HOD")
+                {
+                    activecls = "active";
+                }
+                <div class="tab-pane @activecls" id="tab_2">
+                    <div class="table-responsive">
+                        @{
+                            ViewBag.RequestType = "CR";
+                            if (ViewBag.UserType == "EU" || ViewBag.UserType == "UAT")
+                            {
+                                Html.RenderPartial("_RequestListPartial");
+                            }
+                            else if (ViewBag.UserType == "CO")
+                            {
+                                Html.RenderPartial("_CoRequestListPartial");
+                            }
+                            else if (ViewBag.UserType == "IT")
+                            {
+                                Html.RenderPartial("_ItRequestListPartial");
+                            }
+                            else if (ViewBag.UserType == "BASIS")
+                            {
+                                Html.RenderPartial("_BasisRequestListPartial");
+                            }
+                            else if (ViewBag.UserType == "HOD")
+                            {
+                                Html.RenderPartial("_HODRequestListPartial");
+                            }
+                            else if (ViewBag.UserType == "ADMIN")
+                            {
+                                Html.RenderPartial("_AdminRequestListPartial");
+                            }
+                        }
+                    </div>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        if ('@ViewBag.Action' == 'SAVE') {
+            toastr["success"]('@ViewBag.IssueId' + " - Request Created Successfully!");
+        }
+        else if ('@ViewBag.Action' == 'EDIT') {
+            toastr["success"]("Request Updated Successfully!");
+        }
+        else if ('@ViewBag.Action' == 'ERROR') {
+            toastr["error"]("Something went wrong, Please try again.");
+        }
+
+        $('#FromToDate').daterangepicker({
+            //autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear',
+                format: 'DD/MMM/YYYY'
+            },
+            maxDate: new Date()
+        });
+
+        if ('@ViewBag.FocusOn' == 'CR')
+        {
+            $('a[href="#tab_2"]').click();
+        }
+        
+
+        $('#FromToDate').val('');
+
+        $('#ModuleId').removeAttr('required');
+
+        @*$('#btnSearch').on('click', function () {
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url: '@Url.Action("RequestList", "Request")',
+                data: {
+                    type: $('#UserType').val(),
+                    locationId: $('#LocationId').val(),
+                    applicationId: $('#ApplicationId').val(),
+                    moduleId: $('#ModuleId').val(),
+                    statusId: $('#StatusId').val(),
+                    priorityId: $('#PriorityId').val(),
+                    fromtoDate: $('#FromToDate').val()
+                },
+                beforeSend: function () { },
+                success: function (response) {
+                    if (response != null && response != undefined) {
+
+                    }
+                },
+                error: function (ex, st, th) { },
+                complete: function () { }
+            });
+        });*@
+    });
+</script>

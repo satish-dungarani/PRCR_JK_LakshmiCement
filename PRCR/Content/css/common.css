@@ -1,0 +1,13 @@
+﻿label.form-control {
+    background-color : #e6e6e6;
+}
+.red {
+    color:red;
+}
+.dt-buttons, .dataTables_length {
+         float:left;
+         margin-right: 20px;
+     }
+     table.dataTable {
+         table-layout:fixed;
+     }

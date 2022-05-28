@@ -1,0 +1,146 @@
+﻿@using PRCR.Models;
+@model RequestModel
+
+@{
+    ViewBag.Title = "Admin Request Remark";
+}
+<style>
+    .form-control {
+        height: auto;
+    }
+</style>
+
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewBag.RequestType Request Detail</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Location</label>
+                            <label for="" class="form-control clslbl" style="display: block;">
+                                @Html.DisplayTextFor(model => model.LocationName)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Contact Name</label>
+                            <label for="" class="form-control">
+                                @Html.DisplayTextFor(model => model.ContactName)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Department</label>
+                            <label for="" class="form-control">
+                                @Html.DisplayTextFor(model => model.Department)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Mobile</label>
+                            <label for="" class="form-control">
+                                @Html.DisplayTextFor(model => model.Mobile)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Application</label>
+                            <label for="" class="form-control clslbl">
+                                @Html.DisplayTextFor(model => model.ApplicationName)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Module</label>
+                            <label for="" class="form-control clslbl">
+                                @Html.DisplayTextFor(model => model.ModuleName)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Priority</label>
+                            <label for="" class="form-control">
+                                @Html.DisplayTextFor(model => model.PriorityName)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Status</label>
+                            <label for="" class="form-control">
+                                @Html.HiddenFor(model => model.StatusId)
+                                @Html.DisplayTextFor(model => model.Status)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Subject</label>
+                            <label for="" class="form-control">
+                                @Html.DisplayTextFor(model => model.Subject)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Target Issue Resolve Date</label>
+                            <label for="" class="form-control">
+                                @Html.DisplayTextFor(model => model.TargetIssueResolveDate)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">Revise Issue Resolve Date	</label>
+                            <label for="" class="form-control">
+                                @Html.DisplayTextFor(model => model.ReviseIssueResolveDate)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_communication_view" data-toggle="tab">Communication</a></li>
+                                <li><a href="#tab_documents_view" data-toggle="tab">Documents</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_communication_view">
+                                    @Html.Partial("_CommunicationHistoryPartial", Model.Communications)
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_documents_view">
+                                    @Html.Partial("_DocumentsListPartial", Model.Documents)
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                        <!-- nav-tabs-custom -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+            <div class="box-footer">
+                <a href="@Url.Action("RequestList", "Request", new { type = "ADMIN" })" class="btn btn-danger">Close</a>
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+</div>

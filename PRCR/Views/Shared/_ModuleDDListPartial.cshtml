@@ -1,0 +1,13 @@
+﻿@using PRCR.Models;
+@model MasterModel
+
+@if(Model.ApplicationId != 0){
+    @Html.DropDownListFor(model => model.ModuleId,
+    new SelectList((List<SelectListItem>)CommonServices.GetModuleList(Model.ApplicationId), "Value", "Text", Model.ModuleId == 0 ? "" : Model.ModuleId.ToString()), "--Select--",
+                            new { @class = "form-control select2" , required = true})
+}
+else {
+    @Html.DropDownListFor(model => model.ModuleId,
+    new SelectList(new List<SelectListItem>(), "Value", "Text", ""), "--Select--",
+                        new { @class = "form-control select2" , required = true})
+}

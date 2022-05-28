@@ -1,0 +1,234 @@
+﻿@using PRCR.Models;
+@model RequestModel
+
+@{
+    ViewBag.Title = "UAT Request Remark";
+}
+<style>
+    .form-control {
+        height: auto;
+    }
+</style>
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewBag.RequestType Request Detail</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Communication", "Request", new { type = "UAT" }, FormMethod.Post, new { @class = "", enctype = "multipart/form-data" }))
+            {
+                
+                 @Html.HiddenFor(model => model.RequetsId)
+                @Html.HiddenFor(model => model.RequestType)
+                @Html.HiddenFor(model => model.IssueId)
+                @Html.HiddenFor(model => model.UserType)
+                @Html.HiddenFor(model => model.Subject)
+                @Html.HiddenFor(model => model.Mobile)
+                @Html.HiddenFor(model => model.PriorityId)
+                @Html.HiddenFor(model => model.IsHODApprove)
+                @Html.HiddenFor(model => model.CreateDate)
+                @Html.HiddenFor(model => model.CreateTime)
+                @Html.HiddenFor(model => model.ContactName)
+                @Html.HiddenFor(model => model.Department)
+                @Html.HiddenFor(model => model.HODARDate)
+                @Html.HiddenFor(model => model.HODARTime)
+                @Html.HiddenFor(model => model.RequestCreateEmployeeCode)
+                @Html.HiddenFor(model => model.ApplicationId)
+                @Html.HiddenFor(model => model.ApplicationName)
+                @Html.HiddenFor(model => model.HODEmployeeCode)
+                @Html.HiddenFor(model => model.HODName)
+                @Html.HiddenFor(model => model.LocationId)
+                @Html.HiddenFor(model => model.LocationName)
+                @Html.HiddenFor(model => model.ModuleId)
+                @Html.HiddenFor(model => model.ModuleName)
+                @Html.HiddenFor(model => model.Description)
+                @Html.HiddenFor(model => model.OutcomeofChanges)
+                @Html.HiddenFor(model => model.PurposeofNewRequirment)
+                @Html.HiddenFor(model => model.RefModuleUserMappingId) 
+                @Html.HiddenFor(model => model.RefIssueTypeId)
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Location</label>
+                                <label for="" class="form-control">@Html.DisplayTextFor(model => model.LocationName)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Contact Name</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.ContactName)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Department</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.Department)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Mobile</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.Mobile)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Application</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.ApplicationName)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Module</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.ModuleName)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Priority</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.PriorityName)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Status</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.Status)
+                                </label>
+                            </div>
+                        </div>
+                        @if (Model.RequestType == "CR")
+                        {
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="">HOD</label>
+                                    <label for="" class="form-control">
+                                      @Html.DisplayTextFor(model => model.HODEmployeeCode) - @Html.DisplayTextFor(model => model.HODName)
+                                    </label>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Subject</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.Subject)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @if (ViewBag.Action == "View")
+                            {
+                                @*<div class="form-group">
+                                    @Html.Partial("_CommunicationHistoryPartial", Model.Communications)
+                                </div>*@
+                                
+                                <!-- Custom Tabs -->
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs">
+                                        <li  class="active"><a href="#tab_communication_view" data-toggle="tab">Communication</a></li>
+                                        <li><a href="#tab_documents_view" data-toggle="tab">Documents</a></li>
+                                    </ul>
+                                    <div class="tab-content"> 
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane active" id="tab_communication_view">
+                                            @Html.Partial("_CommunicationHistoryPartial", Model.Communications)
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_documents_view">
+                                            @Html.Partial("_DocumentsListPartial", Model.Documents)
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                                <!-- nav-tabs-custom -->
+                                
+                            }
+                            else
+                            {
+                                <!-- Custom Tabs -->
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs" id="ulRequestManage">
+                                        <li class="active" id="liRemark"><a href="#tab_reviewremarks" data-toggle="tab">Review & Remarks</a></li>
+                                        <li><a href="#tab_communication" data-toggle="tab">Communication</a></li>
+                                        <li><a href="#tab_documents" data-toggle="tab">Documents</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_reviewremarks">
+                                            <div class="form-horizontal">
+                                                <div class="row" style="padding: 10px;">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="" class="col-md-2 control-label">Remark</label><span class="red">*</span>
+                                                            <div class="col-md-10">
+                                                                @Html.TextAreaFor(model => model.Communication.Remark, new { rows = 6, @class = "form-control" , @minlength = "5", @maxlength = "3995", required = true})
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="" class="col-md-2 control-label">Attchment</label>
+                                                            <div class="col-md-4">
+                                                                @Html.Hidden("Communication.DocumentsAttachment.DocumentType","UAT")
+                                                                <input type="file" name="IssueFile" id="IssueFile" class="" />
+                                                            </div>
+                                                            <label class="col-md-6" style="text-align: right;">
+                                                                @Html.CheckBoxFor(model => model.Communication.IsUATCompleted, new { @style = "width:20px;height:20px;margin-right:5px;" })  Is Request completed?
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_communication">
+                                            @Html.Partial("_CommunicationHistoryPartial", Model.Communications)
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_documents">
+                                            @Html.Partial("_DocumentsListPartial", Model.Documents)
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                                <!-- nav-tabs-custom -->
+                            }
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    @if (ViewBag.Action == "View")
+                    {
+                        <a href="@Url.Action("RequestList", "Request", new { type = "EU" })" class="btn btn-danger">Close</a>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary clsSubmitBtn">Submit</button>
+                        <a href="@Url.Action("RequestList", "Request", new { type = "EU" })" class="btn btn-danger">Cancel</a>
+                    }
+                </div>
+            }
+        </div>
+        <!-- /.box -->
+    </div>
+</div>

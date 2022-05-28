@@ -1,0 +1,8 @@
+1) Add 2 fields in CR_LOG_ISSUEREQUEST Table
+
+TargetIssueResolveDate	date
+ReviseIssueResolveDate	date
+
+2) Also this 2 fields set on consultant 1 page for PR and CR both
+3) check location ins upd method code with dummy data. (Look in PRCRDBA project)
+4) also add seqName.nextval in all INSUPD procedure.

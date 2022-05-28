@@ -1,0 +1,380 @@
+﻿@using PRCR.Models;
+@model DashboardModel
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+    @*<div class="row">
+        <div class="col-md-3">
+            <label>Location</label>
+            @Html.DropDownList("LocationId", new SelectList(CommonServices.GetLocationList(), "Value", "Text", ""), "--Select--", new { @class = "form-control select2" })
+        </div>
+        <div class="col-md-6">
+            <label>From - To Date</label>
+            @Html.TextBox("FromToDate", "", new { @class = "form-control", autocomplete = "off" })
+        </div>
+        <div class="icon">
+            <a href="#"><i class="ion ion-search"></i></a>
+        </div>
+
+    </div>*@
+
+    <div class="row">
+        @using (Html.BeginForm("Dashboard", "Home", FormMethod.Post, new { id = "frmDashboard" }))
+        {
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-aqua"><i class="fa fa-map-marker"></i></span>
+
+                    <div class="info-box-content">
+                        <label>Location</label>
+                        @Html.DropDownList("LocationId", new SelectList(CommonServices.GetLocationList(), "Value", "Text", ""), "--Select--", new { @class = "form-control select2" })
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fa fa-calendar"></i></span>
+
+                    <div class="info-box-content">
+                        <label>From - To Date</label>
+                        @Html.TextBox("FromToDate", "", new { @class = "form-control", autocomplete = "off" })
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+        }
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+    </div>
+    <div class="row">
+        <!-- ./col -->
+        <div class="col-md-6">
+            <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user-2">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-yellow">
+                    <div class="widget-user-image">
+                    </div>
+                    <!-- /.widget-user-image -->
+                    <h3 class="widget-user-username">Issue/Problem Request Status Wise</h3>
+                </div>
+                <div class="box-footer no-padding">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Location wise</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="tblDashbord table-bordered table-hover no-margin" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Location</th>
+                                            <th>Pending</th>
+                                            <th>WIP</th>
+                                            <th>UAT</th>
+                                            <th>Closed</th>
+                                            <th>Completed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.locationWiseRequestlist.Where(x => x.RequestType == "PR").ToList() != null && Model.locationWiseRequestlist.Where(x => x.RequestType == "PR").Count() > 0)
+                                        {
+                                            foreach (var item in Model.locationWiseRequestlist.Where(x => x.RequestType == "PR").ToList())
+                                            {
+                                            <tr>
+                                                <td>@item.LocationName</td>
+                                                <td>
+                                                    <a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 1 })" 
+                                                        class="label label-info">@item.PendingCnt
+                                                    </a>
+                                                </td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 2 })"  
+                                                    class="label label-warning">@item.WIPCnt</a></td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 5 })"  
+                                                    class="label label-primary">@item.UATCnt</a></td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 4 })"  
+                                                    class="label label-danger">@item.ClosedCnt</a></td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 3 })"  
+                                                    class="label label-success">@item.CompletedCnt</a></td>
+                                            </tr>
+                                            }
+
+                                        }
+                                        else
+                                        { 
+                                            <tr>
+                                                <td colspan="6">No Request Found</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer clearfix">
+                            @* <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Module wise</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="tblDashbord table-bordered table-hover no-margin" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Module</th>
+                                            <th>Pending</th>
+                                            <th>WIP</th>
+                                            <th>UAT</th>
+                                            <th>Closed</th>
+                                            <th>Completed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.ModuleWiseRequestlist.Where(x => x.RequestType == "PR").ToList() != null && Model.ModuleWiseRequestlist.Where(x => x.RequestType == "PR").Count() > 0)
+                                        {
+                                            foreach (var item in Model.ModuleWiseRequestlist.Where(x => x.RequestType == "PR").ToList())
+                                            {
+                                            <tr>
+                                                <td>@item.ModuleName</td>
+                                                <td><span class="label label-info">@item.PendingCnt</span></td>
+                                                <td><span class="label label-warning">@item.WIPCnt</span></td>
+                                                <td><span class="label label-primary">@item.UATCnt</span></td>
+                                                <td><span class="label label-danger">@item.ClosedCnt</span></td>
+                                                <td><span class="label label-success">@item.CompletedCnt</span></td>
+                                            </tr>
+                                            }
+
+                                        }
+                                        else
+                                        { 
+                                            <tr>
+                                                <td colspan="6">No Request Found</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer clearfix">
+                            @* <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.widget-user -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-6">
+            <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user-2">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-yellow">
+                    <div class="widget-user-image">
+                        @*<img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">*@
+                    </div>
+                    <!-- /.widget-user-image -->
+                    <h3 class="widget-user-username">New Request Status Wise</h3>
+                    @*<h5 class="widget-user-desc">Lead Developer</h5>*@
+                </div>
+                <div class="box-footer no-padding">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Location wise</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="tblDashbord table-bordered table-hover no-margin" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Location</th>
+                                            <th>Pending</th>
+                                            <th>WIP</th>
+                                            <th>UAT</th>
+                                            <th>Closed</th>
+                                            <th>Completed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.locationWiseRequestlist.Where(x => x.RequestType == "CR").ToList() != null && Model.locationWiseRequestlist.Where(x => x.RequestType == "PR").Count() > 0)
+                                        {
+                                            foreach (var item in Model.locationWiseRequestlist.Where(x => x.RequestType == "CR").ToList())
+                                            {
+                                            <tr>
+                                                <td>@item.LocationName</td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 1, focusOn = item.RequestType })" 
+                                                    class="label label-info">@item.PendingCnt</a></td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 2, focusOn = item.RequestType })" 
+                                                    class="label label-warning">@item.WIPCnt</a></td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 5, focusOn = item.RequestType })" 
+                                                    class="label label-primary">@item.UATCnt</a></td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 4, focusOn = item.RequestType })" 
+                                                    class="label label-danger">@item.ClosedCnt</a></td>
+                                                <td><a href="@Url.Action("RequestList", "Request", new { type = ViewBag.UserType, LocationId = item.LocationId, StatusId = 3, focusOn = item.RequestType })" 
+                                                    class="label label-success">@item.CompletedCnt</a></td>
+                                            </tr>
+                                            }
+
+                                        }
+                                        else
+                                        { 
+                                            <tr>
+                                                <td colspan="6">No Request Found</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer clearfix">
+                            @* <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Module wise</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="tblDashbord table-bordered table-hover no-margin" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Module</th>
+                                            <th>Pending</th>
+                                            <th>WIP</th>
+                                            <th>UAT</th>
+                                            <th>Closed</th>
+                                            <th>Completed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.ModuleWiseRequestlist.Where(x => x.RequestType == "CR").ToList() != null && Model.ModuleWiseRequestlist.Where(x => x.RequestType == "CR").Count() > 0)
+                                        {
+                                            foreach (var item in Model.ModuleWiseRequestlist.Where(x => x.RequestType == "CR").ToList())
+                                            {
+                                            <tr>
+                                                <td>@item.ModuleName</td>
+                                                <td><span class="label label-info">@item.PendingCnt</span></td>
+                                                <td><span class="label label-warning">@item.WIPCnt</span></td>
+                                                <td><span class="label label-primary">@item.UATCnt</span></td>
+                                                <td><span class="label label-danger">@item.ClosedCnt</span></td>
+                                                <td><span class="label label-success">@item.CompletedCnt</span></td>
+                                            </tr>
+                                            }
+
+                                        }
+                                        else
+                                        { 
+                                            <tr>
+                                                <td colspan="6">No Request Found</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer clearfix">
+                            @* <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.widget-user -->
+        </div>
+
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        var currentTime = new Date();
+        // First Date Of the month 
+        var startDateFrom = new Date(currentTime.getFullYear(), currentTime.getMonth(), 1);
+        // Last Date Of the Month 
+        var startDateTo = new Date(currentTime.getFullYear(), currentTime.getMonth() + 1, 0);
+
+        $('#FromToDate').daterangepicker({
+            //autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear',
+                format: 'DD/MMM/YYYY'
+            },
+            //minDate: startDateFrom,
+            maxDate: currentTime,
+            startDate: startDateFrom,
+            endDate: currentTime
+        });
+
+        $('#LocationId, #FromToDate').on('change', function () {
+            $('#frmDashboard').submit();
+        });
+        // $('#FromToDate').val('');
+    });
+</script>

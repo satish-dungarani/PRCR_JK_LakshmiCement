@@ -1,0 +1,157 @@
+﻿@using PRCR.Models;
+@model List<RequestModel>
+
+@if (ViewBag.RequestType == "CR")
+{
+    <table id="tblCR" class="table table-bordered table-hover" style="width: 100%;">
+        <thead>
+            <tr>
+                @*<th style="display: none;">Id</th>*@
+                <th>Action</th>
+                <th>Date</th>
+                <th>Code</th>
+                <th>Type</th>
+                <th>Subject</th>
+                <th>Req Status</th>
+                <th>Request Pending At</th>
+                <th>Location</th>
+                <th>Contact Name</th>
+                <th>Mobile No.</th>
+                <th>Department</th>
+                <th>Application</th>
+                <th>Module</th>
+                <th>Priority</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(x => x.RequestType == "CR"))
+            {
+                
+                <tr>
+                    @*<td style="display: none;">@item.RequetsId</td>*@
+                    <td class="text-center">
+                        @if (item.AssignedUserTypeId == Convert.ToInt32(CommonServices.userType.Where(x => x.Text == "Basis Consultant").FirstOrDefault().Value))
+                        {
+                            <a href="@Url.Action("BasisRequestRemark", "Request", new { requestId = @item.RequetsId, op = "edit", type = "CR" })"><i class="fa fa-pencil margin"></i></a>
+                        }
+                        <a href="@Url.Action("BasisRequestRemark", "Request", new { requestId = @item.RequetsId, op = "view", type = "CR" })"><i class="fa fa-eye margin"></i></a>
+                    </td>
+                    <td>@item.CreateTime.ToString("dd/MM/yy HH:MM tt")</td>
+                    <td>@item.IssueId</td><td>@item.RefIssueType</td>
+                    <td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                        @item.Subject
+                    </td>
+                    <td>@item.RefReqStatus</td>
+                    @if (item.RefReqStatusId == 2 || item.RefReqStatusId == 3)
+                    {
+                        <td>@item.HODName</td>
+                    }
+                    else if (item.RefReqStatusId == 1 || item.RefReqStatusId == 4 || item.RefReqStatusId == 7 || item.RefReqStatusId == 8
+                    || item.RefReqStatusId == 9 || item.RefReqStatusId == 10 || item.RefReqStatusId == 13 || item.RefReqStatusId == 16
+                    || item.RefReqStatusId == 17 || item.RefReqStatusId == 18)
+                    {
+                        <td>@item.FirstCoEmployeeName</td>
+                    }
+                    else if (item.RefReqStatusId == 5 || item.RefReqStatusId == 6)
+                    {
+                        <td>@item.AssignedEmployeeName</td>
+                    }
+                    else if (item.RefReqStatusId == 11 || item.RefReqStatusId == 12)
+                    {
+                        <td>@item.RequestCreateEmployeeName</td>
+                    }
+                    else if (item.RefReqStatusId == 14 || item.RefReqStatusId == 15)
+                    {
+                        <td>@item.BasisCoEmployeeName</td>
+                    }
+                    <td>@item.Status</td>
+                    <td>@item.LocationName</td>
+                    <td>@item.ContactName</td>
+                    <td>@item.Mobile</td>
+                    <td>@item.Department</td>
+                    <td>@item.ApplicationName</td>
+                    <td>@item.ModuleName</td>
+                    <td>@item.PriorityName</td>
+                </tr>
+            }
+        </tbody>
+    </table>  
+}
+else
+{
+    <table id="tblPR" class="table table-bordered table-hover" style="width: 100%;">
+        <thead>
+            <tr>
+                @*<th style="display: none;">Id</th>*@
+                <th>Action</th>
+                <th>Date</th>
+                <th>Code</th>
+                <th>Type</th>
+                <th>Subject</th>
+                <th>Req Status</th>
+                <th>Request Pending At</th>
+                <th>Location</th>
+                <th>Contact Name</th>
+                <th>Mobile No.</th>
+                <th>Department</th>
+                <th>Application</th>
+                <th>Module</th>
+                <th>Priority</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(x => x.RequestType == "PR"))
+            { 
+                <tr>
+                    @*<td style="display: none;">@item.RequetsId</td>*@
+                    <td class="text-center">
+                        @if (item.AssignedUserTypeId == Convert.ToInt32(CommonServices.userType.Where(x => x.Text == "Basis Consultant").FirstOrDefault().Value))
+                        {
+                            <a href="@Url.Action("BasisRequestRemark", "Request", new { requestId = @item.RequetsId, op = "edit", type = "PR" })"><i class="fa fa-pencil margin"></i></a>
+                        }
+                        <a href="@Url.Action("BasisRequestRemark", "Request", new { requestId = @item.RequetsId, op = "view", type = "PR" })"><i class="fa fa-eye margin"></i></a>
+                    </td>
+                    <td>@item.CreateTime.ToString("dd/MM/yy HH:MM tt")</td>
+                    <td>@item.IssueId</td><td>@item.RefIssueType</td>
+                    <td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                        @item.Subject
+                    </td>
+                    <td>@item.RefReqStatus</td>
+                    @if (item.RefReqStatusId == 2 || item.RefReqStatusId == 3)
+                    {
+                        <td>@item.HODName</td>
+                    }
+                    else if (item.RefReqStatusId == 1 || item.RefReqStatusId == 4 || item.RefReqStatusId == 7 || item.RefReqStatusId == 8
+                    || item.RefReqStatusId == 9 || item.RefReqStatusId == 10 || item.RefReqStatusId == 13 || item.RefReqStatusId == 16
+                    || item.RefReqStatusId == 17 || item.RefReqStatusId == 18)
+                    {
+                        <td>@item.FirstCoEmployeeName</td>
+                    }
+                    else if (item.RefReqStatusId == 5 || item.RefReqStatusId == 6)
+                    {
+                        <td>@item.AssignedEmployeeName</td>
+                    }
+                    else if (item.RefReqStatusId == 11 || item.RefReqStatusId == 12)
+                    {
+                        <td>@item.RequestCreateEmployeeName</td>
+                    }
+                    else if (item.RefReqStatusId == 14 || item.RefReqStatusId == 15)
+                    {
+                        <td>@item.BasisCoEmployeeName</td>
+                    }
+                    <td>@item.LocationName</td>
+                    <td>@item.ContactName</td>
+                    <td>@item.Mobile</td>
+                    <td>@item.Department</td>
+                    <td>@item.ApplicationName</td>
+                    <td>@item.ModuleName</td>
+                    <td>@item.PriorityName</td>
+                    <td>@item.Status</td>
+                </tr>                
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,101 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Administrator>C:
+
+C:\Users\Administrator>sqlplus "/as sysdba"
+
+SQL*Plus: Release 11.2.0.1.0 Production on Fri May 29 02:47:13 2020
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> create user lcwpay identified by lcwpay tablespace lcwpay;
+create user lcwpay identified by lcwpay tablespace lcwpay
+                                        *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> create user lcwpay identified by lcwpay;
+
+User created.
+
+SQL> create user jkpuwb identified by jkpuwb;
+
+User created.
+
+SQL> grant connect,resource,dba to lcwpay;
+
+Grant succeeded.
+
+SQL> grant connect,resource,dba to jkpuwb;
+
+Grant succeeded.
+
+SQL> CREATE SMALLFILE TABLESPACE "LCWPAY" DATAFILE 'c:\app\Administrator\oradata
+\jkorcl\LCWPAY01.DBF' SIZE 3000M AUTOEXTEND ON NEXT 25K MAXSIZE UNLIMITED LOGGIN
+G EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO
+  2  ;
+CREATE SMALLFILE TABLESPACE "LCWPAY" DATAFILE 'c:\app\Administrator\oradata\jkor
+cl\LCWPAY01.DBF' SIZE 3000M AUTOEXTEND ON NEXT 25K MAXSIZE UNLIMITED LOGGING EXT
+ENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO
+*
+ERROR at line 1:
+ORA-01119: error in creating database file
+'c:\app\Administrator\oradata\jkorcl\LCWPAY01.DBF'
+ORA-27040: file create error, unable to create file
+OSD-04002: unable to open file
+O/S-Error: (OS 3) The system cannot find the path specified.
+
+
+SQL> CREATE SMALLFILE TABLESPACE "LCWPAY" DATAFILE 'c:\app\Administrator\oradata
+\orcljk\LCWPAY01.DBF' SIZE 3000M AUTOEXTEND ON NEXT 25K MAXSIZE UNLIMITED LOGGIN
+G EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO
+  2  ;
+
+Tablespace created.
+
+SQL> CREATE SMALLFILE TABLESPACE "LCWPAY" DATAFILE 'c:\app\Administrator\oradata
+\orcljk\jkpuwb01.DBF' SIZE 3000M AUTOEXTEND ON NEXT 25K MAXSIZE UNLIMITED LOGGIN
+G EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO
+  2  ;
+CREATE SMALLFILE TABLESPACE "LCWPAY" DATAFILE 'c:\app\Administrator\oradata\orcl
+jk\jkpuwb01.DBF' SIZE 3000M AUTOEXTEND ON NEXT 25K MAXSIZE UNLIMITED LOGGING EXT
+ENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO
+*
+ERROR at line 1:
+ORA-01543: tablespace 'LCWPAY' already exists
+
+
+SQL> CREATE SMALLFILE TABLESPACE "jkpuwb" DATAFILE 'c:\app\Administrator\oradata
+\orcljk\jkpuwb01.DBF' SIZE 3000M AUTOEXTEND ON NEXT 25K MAXSIZE UNLIMITED LOGGIN
+G EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO
+  2  ;
+
+Tablespace created.
+
+SQL> exit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64
+bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+C:\Users\Administrator>imp lcwpay/lcwpay
+
+Import: Release 11.2.0.1.0 - Production on Fri May 29 02:52:48 2020
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+
+Connected to: Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit
+Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+Import data only (yes/no): no >
+
+Import file: EXPDAT.DMP > ^C
+C:\Users\Administrator>

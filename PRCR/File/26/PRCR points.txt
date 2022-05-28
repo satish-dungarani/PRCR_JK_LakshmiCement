@@ -1,0 +1,21 @@
+1) provide dropdown list for HOD in End user only for CR  ------  done
+2) Location, Application and Module can change by     (escalte to 3rd party) ----- done
+3) Provide send mail and sms check box for 2nd consultant     ---------  done
+4) 2nd consultant can add remark on request at medium and low priority
+  - and also if 1st consultant checked on mail and sms checked box on fs remark time   ---------------pending
+5) give dropdown for UAT process complete or not on UAT page for end user ---- check box Is complated? ------- done
+6) Disable status DD for UAT user --------- done
+
+
+
+user - counsultant
+doc type dropdown -- select--   --------done
+doc type select FS send email sms to 2nd counsultant   -----done
+
+
+user - endusr
+- edit request Status is only display for ---------done
+- isComplete or not checkbox ------done
+
+
+AdminRemark view created same as Counsultant ----- done

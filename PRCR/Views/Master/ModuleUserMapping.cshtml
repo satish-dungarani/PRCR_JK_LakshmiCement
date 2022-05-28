@@ -1,0 +1,170 @@
+﻿@using PRCR.Models;
+@model ModuleUserMappingModel
+@{
+    ViewBag.Title = "Module User Mapping";
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Module User Mapping</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            @*@using (Html.BeginForm("ModuleUserMapping", "Master", new { op = @TempData["Action"] }, FormMethod.Post, new { @class = "", enctype = "multipart/form-data" }))*@
+
+            @using (Ajax.BeginForm("ModuleUserMapping", "Master", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "funMumSuccess"
+            }, new { @class = "", id = "frmMum" }))
+            {
+                @Html.HiddenFor(model => model.MUMId)
+                
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Location</label><span class="red">*</span>
+                                @Html.DropDownListFor(model => model.LocationId,
+                                new SelectList((List<SelectListItem>)CommonServices.GetLocationList(), "Value", "Text", Model.LocationId == 0 ? "" : Model.LocationId.ToString()), "--Select--", new { @class = "form-control select2", required = true })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Application</label><span class="red">*</span>
+                                @Html.DropDownListFor(model => model.ApplicationId,
+                                new SelectList((List<SelectListItem>)CommonServices.GetApplicationList(), "Value", "Text", Model.ApplicationId == 0 ? "" : Model.ApplicationId.ToString()), "--Select--", new { @class = "form-control select2", required = true })
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Module</label><span class="red">*</span>
+                                <div id="ddModuleList">
+                                    @{ MasterModel masterModel = new MasterModel();
+                                       masterModel.ApplicationId = Model.ApplicationId;
+                                       masterModel.ModuleId = Model.ModuleId; }
+                                    @Html.Partial("_ModuleDDListPartial", masterModel)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Consultant 1 Employee</label><span class="red">*</span>
+                                @Html.DropDownListFor(model => model.Consultant1EmployeeCode,
+                                new SelectList((List<SelectListItem>)CommonServices.GetEmployees("consultant"), "Value", "Text", Model.Consultant1EmployeeCode == null ? "" : Model.Consultant1EmployeeCode), "--Select--",
+                                new { @class = "form-control select2", required = true })
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.HasEmail1, new { @style = "width:20px; height:20px; margin:10px;" }) <span>Email</span>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.HasSMS1, new { @style = "width:20px; height:20px; margin:10px;" }) <span>SMS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Consultant 2 Employee</label>
+                                @Html.DropDownListFor(model => model.Consultant2EmployeeCode,
+                        new SelectList((List<SelectListItem>)CommonServices.GetEmployees("consultant"), "Value", "Text", Model.Consultant2EmployeeCode == null ? "" : Model.Consultant2EmployeeCode), "--Select--",
+                        new { @class = "form-control select2" })
+
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.HasEmail2, new { @style = "width:20px; height:20px; margin:10px;" }) <span>Email</span>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.HasSMS2, new { @style = "width:20px; height:20px; margin:10px;" }) <span>SMS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Consultant 3 Employee</label>
+                                @Html.DropDownListFor(model => model.Consultant3EmployeeCode,
+                        new SelectList((List<SelectListItem>)CommonServices.GetEmployees("consultant"), "Value", "Text", Model.Consultant3EmployeeCode == null ? "" : Model.Consultant3EmployeeCode), "--Select--",
+                        new { @class = "form-control select2" })
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.HasEmail3, new { @style = "width:20px; height:20px; margin:10px;" }) <span>Email</span>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.HasSMS3, new { @style = "width:20px; height:20px; margin:10px;" }) <span>SMS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Basis Consultant Employee</label>
+                                @Html.DropDownListFor(model => model.BasisConsultantEmployeeCode,
+                                new SelectList((List<SelectListItem>)CommonServices.GetEmployees("basisconsultant"), "Value", "Text", Model.BasisConsultantEmployeeCode == null ? "" : Model.BasisConsultantEmployeeCode), "--Select--",
+                        new { @class = "form-control select2" })
+
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.HasEmail4, new { @style = "width:20px; height:20px; margin:10px;" }) <span>Email</span>
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.CheckBoxFor(model => model.HasSMS4, new { @style = "width:20px; height:20px; margin:10px;" }) <span>SMS</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("ModuleUserMappingList", "Master")'">Cancel</button>
+                </div>
+            }
+
+            <!-- /.box -->
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on('select2:select', '#Consultant1EmployeeCode', function (e) {
+        $("#Consultant2EmployeeCode option").removeAttr('disabled');
+        $("#Consultant3EmployeeCode option").removeAttr('disabled');
+        $('#Consultant2EmployeeCode').val('').trigger('change');
+        $('#Consultant3EmployeeCode').val('').trigger('change');
+
+        if ($(this).val() != '') {
+            $("#Consultant2EmployeeCode option[value='" + $(this).val() + "']").attr('disabled', 'disabled');
+            $("#Consultant3EmployeeCode option[value='" + $(this).val() + "']").attr('disabled', 'disabled');
+        }
+    });
+
+    $(document).on('select2:select', '#Consultant2EmployeeCode', function (e) {
+        $("#Consultant3EmployeeCode option").removeAttr('disabled');
+        $('#Consultant3EmployeeCode').val('').trigger('change');
+
+        if ($(this).val() != '') {
+            $("#Consultant3EmployeeCode option[value='" + $("#Consultant1EmployeeCode").val() + "']").attr('disabled', 'disabled');
+            $("#Consultant3EmployeeCode option[value='" + $(this).val() + "']").attr('disabled', 'disabled');
+        }
+    });
+
+    
+
+    function funMumSuccess(response) {
+        if (response.Result == "OK") {
+            if (response.mumid == -1) {
+                toastr["warning"](response.msg);
+            }
+            else {
+                toastr["success"](response.msg);
+                setInterval(function () { window.location.href = '@Url.Action("ModuleUserMappingList", "Master")'; }, 2000);
+            }
+        }
+        else {
+            toastr["error"](response.msg);
+        }
+    }
+     
+</script>

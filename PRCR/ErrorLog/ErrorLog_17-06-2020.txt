@@ -1,0 +1,57 @@
+Time: 17/06/2020 01:08:05 AM
+-----------------------------------------------------------
+Message: The remote server returned an error: (503) Server Unavailable.
+StackTrace:    at PRCR.Models.CommonServices.sms(String mobile, String subject) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 1549
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 256
+Source: PRCR
+TargetSite: Void sms(System.String, System.String)
+-----------------------------------------------------------
+
+Time: 17/06/2020 01:08:05 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 17/06/2020 05:05:12 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 17/06/2020 05:06:32 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 17/06/2020 05:23:20 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 17/06/2020 05:23:43 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 17/06/2020 05:23:48 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+

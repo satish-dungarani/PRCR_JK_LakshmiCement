@@ -1,0 +1,78 @@
+﻿@using PRCR.Models;
+@model List<MasterModel>
+
+@{
+    ViewBag.Title = "MasterList";
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewBag.MasterName List</h3>
+                @if (ViewBag.Type == "LO" || ViewBag.Type == "AP" || ViewBag.Type == "MO" || ViewBag.Type == "IST")
+                {
+                    <button class="btn bg-navy pull-right" onclick="funManageMaster('@ViewBag.Type',0)">Add @ViewBag.MasterName</button>                    
+                }
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body" id="divMasterList">
+                @Html.Partial("_MasterListPartial", Model)
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+<script>
+    function funManageMaster(_type, _id) {
+
+        $.ajax({
+            type: 'get',
+            dataType: 'html',
+            url: '@Url.Action("MasterData", "Master")',
+            data: {
+                id: _id,
+                type: _type
+            },
+            beforeSend: function () {
+            },
+            success: function (response) {
+                $('#divCommonModalContent').empty();
+                $('#divCommonModalContent').html(response);
+                $('#modal-default').modal('show');
+            },
+            error: function (ex, st, th) {
+            }
+        });
+    }
+
+    function funMasterBegin() { };
+    function funMasterSuccess(response) {
+        if (response != null) {
+            if (response.Result > 0) {
+                $('#modal-default').modal('hide');
+                toastr.success(response.Message);
+                setInterval(function () { location.reload(true); }, 2000);
+            }
+            else if (response.Result == -1) {
+                toastr.warning(response.Message);
+            }
+            else {
+                toastr.error(response.Message);
+            }
+        }
+        else {
+            toastr.error("Please contact to Administrator and try again later!");
+        }
+    };
+    function funMasterFailure() { };
+    function funMasterComplete() { };
+
+
+</script>

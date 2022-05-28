@@ -1,0 +1,18 @@
+1) Create filter on request and download it in excel, word, pdf (for all users') - New
+2) file  size allow only upto 2 mb  - New                done
+3) minmum 50 char for all desc, remark, purpose,  outcome  - New
+4) display issue request list by default with pending and WIP status (to consultant, basis consultant, it developer)  - New
+5) Add Userrole mapping for HOD and End user  - New
+6) add communication end check box for It developer and basis consultant  - New
+7) don't restrict to edit request for it developer - consultant, consultant - basis consultant - New
+8) add basis doctype for and add attachment functinality in basis consultant - New
+9) change close -> complete condition for complete request
+10) add detail level status in issue request (like pending for hod approval, approve by hod, send to consultant ect) - New
+11) add document attachment tab to download attachmnet (base on user type)
+12) add * for require fields validation
+13) on chnage of revise date remark requireed and hide assigned to DD. 
+14) design correction of communication and uer role selection page
+15) add column Issue Code, status in list for all user (for target and revise date for consultant only)
+16) set PR & CR front of issue code and revise it yearly. (eg PR202000001,CR202000001) - New
+17) set all value with indivisual column and allow horizontal scroll bar and set action button at first column.
+

@@ -1,0 +1,108 @@
+﻿@using PRCR.Models;
+@model List<ModuleUserMappingModel>
+
+@{
+    ViewBag.Title = "Module User Mapping";
+    int i = 1;
+}
+
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Module User Mapping List</h3>
+                <button  onclick="location.href='@Url.Action("ModuleUserMapping", "Master", new { op = "SAVE" })'" type="button" class="btn bg-navy  pull-right">Add</button>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <table id="tblPR" class="table table-bordered table-hover" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            
+                            <th>Action</th>
+                            <th>Sr. No.</th>
+                            <th>Location</th>
+                            <th>Application</th>
+                            <th>Module</th>
+                            <th>CO1 Emp</th>
+                            <th>CO2 Emp</th>
+                            <th>CO3 Emp</th>
+                            <th>Basis CO Emp</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                 
+                                <td>
+                                    <a href="@Url.Action("ModuleUserMapping", "Master", new { op = "EDIT", mumId = @item.MUMId })"><i class="fa fa-pencil margin"></i></a>
+                                    <a href="javascript:void(0);" onclick="funDeleteMaster('moduleusermap',@item.MUMId)"><i class="fa fa-trash margin"></i></a>
+                                </td>
+                                <td>@(i++)</td>
+                                <td>@item.LocationName</td>
+                                <td>@item.ApplicationName</td>
+                                <td>@item.ModuleName</td>
+                                <td>@item.Consultant1EmployeeCode - @item.Consultant1EmployeeName<br />
+                                    @if (item.HasEmail1)
+                                    { <i class="fa fa-check-square"> Email |</i> }
+                                    else
+                                    { <i class="fa fa-square-o"> Email |</i>}  @if (item.HasSMS1)
+                                                                               { <i class="fa fa-check-square"> SMS</i> }
+                                                                               else
+                                                                               { <i class="fa fa-square-o"> SMS</i> }</td>
+                                <td>@item.Consultant2EmployeeCode - @item.Consultant2EmployeeName<br />
+                                    @if (!string.IsNullOrEmpty(item.Consultant2EmployeeCode) && item.HasEmail2)
+                                    {<i class="fa fa-check-square"> Email |</i> }
+                                    else if (!string.IsNullOrEmpty(item.Consultant2EmployeeCode) && !item.HasEmail2)
+                                    { <i class="fa fa-square-o"> Email |</i> } @if (!string.IsNullOrEmpty(item.Consultant2EmployeeCode) && item.HasSMS2)
+                                                                               {<i class="fa fa-check-square"> SMS</i> }
+                                                                               else if (!string.IsNullOrEmpty(item.Consultant2EmployeeCode) && !item.HasSMS2)
+                                                                               { <i class="fa fa-square-o"> SMS</i> }</td>
+                                <td>@item.Consultant3EmployeeCode - @item.Consultant3EmployeeName<br />
+                                    @if (!string.IsNullOrEmpty(item.Consultant3EmployeeCode) && item.HasEmail3)
+                                    {<i class="fa fa-check-square"> Email |</i> }
+                                    else if (!string.IsNullOrEmpty(item.Consultant3EmployeeCode) && !item.HasEmail3)
+                                    { <i class="fa fa-square-o"> Email |</i> } @if (!string.IsNullOrEmpty(item.Consultant3EmployeeCode) && item.HasSMS3)
+                                                                               { <i class="fa fa-check-square"> SMS</i> }
+                                                                               else if (!string.IsNullOrEmpty(item.Consultant3EmployeeCode) && !item.HasSMS3)
+                                                                               { <i class="fa fa-square-o"> SMS</i> }</td>
+                                <td>@item.BasisConsultantEmployeeCode - @item.BasisConsultantEmployeeName<br />
+                                    @if (!string.IsNullOrEmpty(item.BasisConsultantEmployeeCode) && item.HasEmail4)
+                                    {<i class="fa fa-check-square"> Email |</i> }
+                                    else if (!string.IsNullOrEmpty(item.BasisConsultantEmployeeCode) && !item.HasEmail4)
+                                    { <i class="fa fa-square-o"> Email |</i> }  @if (!string.IsNullOrEmpty(item.BasisConsultantEmployeeCode) && item.HasSMS4)
+                                                                                { <i class="fa fa-check-square"> SMS</i> }
+                                                                                else if (!string.IsNullOrEmpty(item.BasisConsultantEmployeeCode) && !item.HasSMS4)
+                                                                                { <i class="fa fa-square-o"> SMS</i> }</td>
+
+                            </tr> 
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+<script>
+    @*    $(document).ready(function () {
+
+        if ('@TempData["Action"]' != null && '@TempData["Action"]' == 'SAVE') {
+            toastr["success"]("Module Mapping Inserted Successfully!");
+        }
+        else if ('@TempData["Action"]' != null && '@TempData["Action"]' == 'EDIT') {
+            toastr["success"]("Module Mapping Updated Successfully!");
+        }
+    });*@
+
+     
+</script>

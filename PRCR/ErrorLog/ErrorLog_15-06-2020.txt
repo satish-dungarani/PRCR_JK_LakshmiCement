@@ -1,0 +1,96 @@
+Time: 15/06/2020 11:32:19 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:32:22 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:32:31 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:33:05 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:33:12 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:33:15 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:33:18 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:33:36 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:34:00 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:34:31 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:37:26 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 15/06/2020 11:42:09 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+

@@ -1,0 +1,448 @@
+﻿@using PRCR.Models;
+@model RequestModel
+
+@{
+    ViewBag.Title = "Consultant Request Remark";
+}
+<style>
+    .form-control {
+        height: auto;
+    }
+</style>
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@ViewBag.RequestType Request Detail</h3>
+                <strong class="pull-right">Consultant Level: @Model.ConsultantLevel</strong>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            @using (Html.BeginForm("Communication", "Request", new { type = "CO" }, FormMethod.Post, new { @class = "", enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.RequetsId)
+                @Html.HiddenFor(model => model.RequestType)
+                @Html.HiddenFor(model => model.IssueId)
+                @Html.HiddenFor(model => model.UserType)
+                @Html.HiddenFor(model => model.Subject)
+                @Html.HiddenFor(model => model.Mobile)
+                @Html.HiddenFor(model => model.PriorityId)
+                @Html.HiddenFor(model => model.IsHODApprove)
+                @Html.HiddenFor(model => model.CreateDate)
+                @Html.HiddenFor(model => model.CreateTime)
+                @Html.HiddenFor(model => model.ContactName)
+                @Html.HiddenFor(model => model.Department)
+                @Html.HiddenFor(model => model.HODARDate)
+                @Html.HiddenFor(model => model.HODARTime)
+                @Html.HiddenFor(model => model.RequestCreateEmployeeCode)
+                @Html.HiddenFor(model => model.ApplicationName)
+                @Html.HiddenFor(model => model.HODEmployeeCode)
+                @Html.HiddenFor(model => model.HODName)
+                @Html.HiddenFor(model => model.LocationName)
+                @Html.HiddenFor(model => model.ModuleName)
+                @Html.HiddenFor(model => model.Description)
+                @Html.HiddenFor(model => model.OutcomeofChanges)
+                @Html.HiddenFor(model => model.PurposeofNewRequirment)
+                @Html.HiddenFor(model => model.RefModuleUserMappingId)
+                @Html.HiddenFor(model => model.RefIssueTypeId)
+                @Html.HiddenFor(model => model.Communication.ConsultantLevel)
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Location</label>
+                                @if (Model.Communication.AssignedUserType != null && Model.Communication.AssignedUserType.ToLower() == "consultant")
+                                {
+                                    <div class="clsddl" style="display: block;">
+                                        @Html.DropDownListFor(model => model.LocationId,
+                        new SelectList((List<SelectListItem>)CommonServices.GetLocationList(), "Value", "Text", Model.LocationId == 0 ? "" : Model.LocationId.ToString()), "--Select--",
+                        new { @class = "form-control select2 clsddl", @style = "display:block;", required = true })
+                                    </div>
+                                     
+                                    <label for="" class="form-control clslbl" style="display: none;">@Html.DisplayTextFor(model => model.LocationName)</label> 
+                                }
+                                else
+                                { <div class="clsddl" style="display: none;">
+                                    @Html.DropDownListFor(model => model.LocationId,
+                        new SelectList((List<SelectListItem>)CommonServices.GetLocationList(), "Value", "Text", Model.LocationId == 0 ? "" : Model.LocationId.ToString()), "--Select--",
+                        new { @class = "form-control select2 clsddl", @style = "display:none;", required = true })
+                                </div>
+                                    <label for="" class="form-control clslbl" style="display: block;">@Html.DisplayTextFor(model => model.LocationName)</label> 
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Contact Name</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.ContactName)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Department</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.Department)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Mobile</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.Mobile)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Application</label>
+                                @if (Model.Communication.AssignedUserType != null && Model.Communication.AssignedUserType.ToLower() == "consultant")
+                                {
+                                    <div class="clsddl" style="display: block;">
+                                        @Html.DropDownListFor(model => model.ApplicationId,
+                                new SelectList((List<SelectListItem>)CommonServices.GetApplicationList(), "Value", "Text", Model.ApplicationId == 0 ? "" : Model.ApplicationId.ToString()), "--Select--",
+                        new { @class = "form-control  clsddl select2", @style = "display:block;", required = true })
+                                    </div>
+                                    <label for="" class="form-control clslbl" style="display: none;">
+                                        @Html.DisplayTextFor(model => model.ApplicationName)
+                                    </label>  
+                                }
+                                else
+                                {
+                                    <div class="clsddl" style="display: none;">
+                                        @Html.DropDownListFor(model => model.ApplicationId,
+                                new SelectList((List<SelectListItem>)CommonServices.GetApplicationList(), "Value", "Text", Model.ApplicationId == 0 ? "" : Model.ApplicationId.ToString()), "--Select--",
+                        new { @class = "form-control select2", @style = "display:none;", required = true })
+                                    </div>
+                                    <label for="" class="form-control clslbl" style="display: block;">
+                                        @Html.DisplayTextFor(model => model.ApplicationName)
+                                    </label>    
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Module</label>
+                                @if (Model.Communication.AssignedUserType != null && Model.Communication.AssignedUserType.ToLower() == "consultant")
+                                {
+                                    <div id="ddModuleList" class="clsddl" style="display: block;">
+                                        @Html.DropDownListFor(model => model.ModuleId,
+                                            new SelectList((List<SelectListItem>)CommonServices.GetModuleList(Model.ApplicationId), "Value", "Text", Model.ModuleId == 0 ? "" : Model.ModuleId.ToString()), "--Select--",
+                                            new { @class = "form-control select2", @style = "display:block;", required = true })
+                                    </div>
+                                     
+                                    <label for="" class="form-control clslbl" style="display: none;">
+                                        @Html.DisplayTextFor(model => model.ModuleName)
+                                    </label>
+                                }
+                                else
+                                {
+                                    <div id="ddModuleList" class="clsddl" style="display: none;">
+                                        @Html.DropDownListFor(model => model.ModuleId,
+                                            new SelectList((List<SelectListItem>)CommonServices.GetModuleList(Model.ApplicationId), "Value", "Text", Model.ModuleId == 0 ? "" : Model.ModuleId.ToString()), "--Select--",
+                                            new { @class = "form-control select2", @style = "display:block;", required = true })
+                                    </div>
+                                    <label for="" class="form-control clslbl" style="display: block;">
+                                        @Html.DisplayTextFor(model => model.ModuleName)
+                                    </label> 
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Priority</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.PriorityName)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Status</label>
+                                @if (ViewBag.Action == "View" || Model.ConsultantLevel != 1)
+                                {
+                                    <label for="" class="form-control">
+                                        @Html.HiddenFor(model => model.StatusId)
+                                        @Html.DisplayTextFor(model => model.Status)
+                                    </label>
+                                }
+                                else
+                                {
+                                    @Html.DropDownListFor(model => model.StatusId,
+                                    new SelectList((List<SelectListItem>)CommonServices.GetStatusList(), "Value", "Text", Model.StatusId == null ? "" : Model.HODEmployeeCode), "--Select--",
+                        new { @class = "form-control select2" })
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Subject</label>
+                                <label for="" class="form-control">
+                                    @Html.DisplayTextFor(model => model.Subject)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Target Issue Resolve Date</label>
+                                @if (ViewBag.Action == "View")
+                                {
+                                    <label for="" class="form-control">
+                                        @Html.DisplayTextFor(model => model.TargetIssueResolveDate)
+                                    </label>
+                                }
+                                else
+                                {
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.TargetIssueResolveDate, new { @class = "form-control pull-right datepicker", @placeholder = "MM/DD/YYYY" })
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="divReviseDate">
+                            <div class="form-group">
+                                <label for="">Revise Issue Resolve Date	</label>
+                                @if (ViewBag.Action == "View")
+                                {
+                                    <label for="" class="form-control">
+                                        @Html.DisplayTextFor(model => model.ReviseIssueResolveDate)
+                                    </label>
+                                }
+                                else
+                                {
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.ReviseIssueResolveDate, new { @class = "form-control pull-right datepicker", @placeholder = "MM/DD/YYYY" })
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @if (ViewBag.Action == "View" || Model.ConsultantLevel == 3)
+                            {
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#tab_communication_view" data-toggle="tab">Communication</a></li>
+                                        <li><a href="#tab_documents_view" data-toggle="tab">Documents</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_communication_view">
+                                            @Html.Partial("_CommunicationHistoryPartial", Model.Communications)
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_documents_view">
+                                            @Html.Partial("_DocumentsListPartial", Model.Documents)
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                                <!-- nav-tabs-custom -->
+                            }
+                            else
+                            {
+                                <!-- Custom Tabs -->
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs" id="ulRequestManage">
+                                        <li class="active" id="liRemark"><a href="#tab_reviewremarks" data-toggle="tab">Review & Remarks</a></li>
+                                        <li><a href="#tab_communication" data-toggle="tab">Communication</a></li>
+                                        <li><a href="#tab_documents" data-toggle="tab">Documents</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_reviewremarks">
+                                            <div class="form-horizontal">
+                                                <div class="row" style="padding: 10px;">
+                                                    <div class="col-md-12">
+                                                        @if (Model.ConsultantLevel == 1)
+                                                        {
+                                                            <div class="form-group" id="divAssigned">
+                                                                <div id="divIfEscalate">
+                                                                    <label for="" class="col-md-2 control-label">Assigned To<span class="red"> *</span></label>
+                                                                    <div class="col-md-3">
+                                                                        @Html.DropDownListFor(model => model.Communication.AssignedUserTypeId,
+                                                                        new SelectList((List<SelectListItem>)CommonServices.GetUserTypeList("Y", Model.RefModuleUserMappingId), "Value", "Text", Model.Communication.AssignedUserTypeId), "--Select--",
+                                                                        new { @class = "form-control select2" })
+                                                                    </div>
+                                                                    <div class="col-md-3 clsAssignedEmployeeCode" style="display: none;">
+                                                                        @Html.DropDownListFor(model => model.Communication.AssignedEmployeeCode,
+                                                                        new SelectList((List<SelectListItem>)CommonServices.GetEmployees("itdeveloper"), "Value", "Text", Model.Communication.AssignedEmployeeCode), "--Select--",
+                                                                        new { @class = "form-control select2" })
+                                                                    </div>
+                                                                </div>
+                                                                <label class="col-md-4 pull-right">
+                                                                    @Html.CheckBoxFor(model => model.Communication.IsEscalate, new { @class = "col-md-1", @style = "width:20px; height:20px; margin-right:10px;" })
+                                                                    Escalate to 3rd party
+                                                                </label>
+                                                            </div>
+                                                        }
+                                                        <div class="form-group">
+                                                            <label for="" class="col-md-2 control-label">Remark<span class="red"> *</span></label>
+                                                            <div class="col-md-10">
+                                                                @Html.TextAreaFor(model => model.Communication.Remark, new { rows = 6, @class = "form-control", @minlength = "5", @maxlength = "3995", required = true })
+                                                            </div>
+                                                        </div>
+                                                        @if (Model.ConsultantLevel == 1)
+                                                        {
+                                                            <div class="form-group">
+                                                                <label for="" class="col-md-2 control-label">Person For UAT</label>
+                                                                <div class="col-md-10">
+                                                                    @Html.TextBoxFor(model => model.Communication.PersonForUAT, new { @class = "form-control", @maxlength = "45" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="col-md-2 control-label">System For UAT</label>
+                                                                <div class="col-md-10">
+                                                                    @Html.TextBoxFor(model => model.Communication.SystemForUAT, new { @class = "form-control", @maxlength = "45" })
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="" class="col-md-2 control-label">Document Type</label>
+                                                                <div class="col-md-2">
+                                                                    @Html.HiddenFor(model => model.Communication.DocumentsAttachment.DocumentType)
+                                                                    @Html.DropDownListFor(model => model.Communication.DocumentsAttachment.RefDocumentTypeId,
+                                    new SelectList((List<SelectListItem>)CommonServices.GetDocumentType().Where(x => x.Text.ToUpper() == "FS" || x.Text.ToUpper() == "SIT").ToList(), "Value", "Text", Model.Communication.DocumentsAttachment.RefDocumentTypeId), "--Select--",
+                        new { @class = "form-control select2" })
+
+                                                                    @*   @Html.DropDownListFor(model => model.Communication.DocumentsAttachment.DocumentType,
+                                                        new SelectList(new List<SelectListItem>
+                                                        {
+                                                            new SelectListItem { Text = "FS", Value = "FS" },
+                                                            new SelectListItem { Text = "SIT", Value = "SIT" },
+                                                        }, "Value", "Text"), "--Select--", new { @class = "form-control select2" })*@
+                                                                </div>
+                                                                <label for="" class="col-md-2 control-label">Attchment</label>
+                                                                <div class="col-md-2">
+                                                                    <input type="file" name="IssueFile" id="IssueFile" class="" />
+                                                                </div>
+                                                                <label class="col-md-4 clsmailsms" style="text-align: right; display: none;">
+                                                                    To 2nd counsultant
+                                                                @Html.CheckBoxFor(model => model.HasEmailTo2ndCon, new { @style = "width:20px; height:20px; margin-left:10px;" }) <span>Email</span>
+                                                                    @Html.CheckBoxFor(model => model.HasSMSTo2ndCon, new { @style = "width:20px; height:20px; margin-left:10px;" }) <span>SMS</span>
+                                                                </label>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_communication">
+                                            @Html.Partial("_CommunicationHistoryPartial", Model.Communications)
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_documents">
+                                            @Html.Partial("_DocumentsListPartial", Model.Documents)
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                                <!-- nav-tabs-custom -->
+                            }
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    @if (ViewBag.Action == "View")
+                    {
+                        <a href="@Url.Action("RequestList", "Request", new { type = "CO" })" class="btn btn-danger">Close</a>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary clsSubmitBtn">Submit</button>
+                        <a href="@Url.Action("RequestList", "Request", new { type = "CO" })" class="btn btn-danger">Cancel</a>
+                    }
+                </div>
+            }
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        //Date picker
+        $('.datepicker').datepicker({
+            autoclose: true
+        });
+
+        //Default Assigned Type Change Event fire
+        $('#Communication_AssignedUserTypeId').change();
+    });
+
+    $(document).on("change", "#Communication_AssignedUserTypeId", function () {
+        $('#Communication_AssignedEmployeeCode').val('').change();
+        if ($("#Communication_AssignedUserTypeId  option:selected").text().toLowerCase() == "consultant") {
+            $(".clslbl").hide();
+            $(".clsddl").show();
+        } else {
+            $(".clsddl").hide();
+            $(".clslbl").show();
+        }
+
+        if ($("#Communication_AssignedUserTypeId  option:selected").text().toLowerCase() == "it developer") {
+            $(".clsAssignedEmployeeCode").show();
+        }
+        else {
+            $(".clsAssignedEmployeeCode").hide();
+        }
+    });
+
+    $(document).on("change", "#Communication_DocumentsAttachment_RefDocumentTypeId", function () {
+
+        var dt = $(this).text();
+        var docType = $("#Communication_DocumentsAttachment_RefDocumentTypeId option:selected").text();
+        $("#Communication_DocumentsAttachment_DocumentType").val(docType);
+        if (docType.toLowerCase() == "fs") {
+            $(".clsmailsms").show();
+        } else {
+            $(".clsmailsms").hide();
+        }
+    });
+
+    $(document).on("change", "#ReviseIssueResolveDate", function () {
+
+        $('#Communication_AssignedEmployeeCode').val('').change();
+        $('#Communication_AssignedUserTypeId').val('').change();
+
+        if ($("#ReviseIssueResolveDate").val() == null || $("#ReviseIssueResolveDate").val() == "" || $("#ReviseIssueResolveDate").val() == undefined) {
+            $("#divAssigned").show();
+        }
+        else {
+            $("#divAssigned").hide();
+        }
+    });
+
+
+    $('#Communication_IsEscalate').change(function () {
+        if ($('#Communication_IsEscalate').is(":checked")) {
+            $("#ReviseIssueResolveDate").val('');
+            $('#Communication_AssignedEmployeeCode').val('').change();
+            $('#Communication_AssignedUserTypeId').val('').change();
+            $("#divReviseDate").hide();
+            $("#divIfEscalate").hide();
+        }
+        else {
+            $("#divReviseDate").show();
+            $("#divIfEscalate").show();
+        }
+    });
+
+</script>

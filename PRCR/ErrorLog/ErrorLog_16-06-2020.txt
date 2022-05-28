@@ -1,0 +1,138 @@
+Time: 16/06/2020 04:32:19 AM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 295
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 16/06/2020 04:32:20 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 09:24:36 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 09:28:44 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 10:37:05 PM
+-----------------------------------------------------------
+Message: ERROR [HYC00] [Oracle][ODBC]Optional feature not implemented.
+StackTrace:    at PRCR.Models.CommunicationServices.SaveCommunication(CommunicationModel model) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 433
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 171
+Source: SQORA32.DLL
+TargetSite: Int32 SaveCommunication(PRCR.Models.CommunicationModel)
+-----------------------------------------------------------
+
+Time: 16/06/2020 10:37:05 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 10:47:28 PM
+-----------------------------------------------------------
+Message: ERROR [HYC00] [Oracle][ODBC]Optional feature not implemented.
+StackTrace:    at PRCR.Models.CommunicationServices.SaveCommunication(CommunicationModel model) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 433
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 171
+Source: SQORA32.DLL
+TargetSite: Int32 SaveCommunication(PRCR.Models.CommunicationModel)
+-----------------------------------------------------------
+
+Time: 16/06/2020 10:47:28 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:19:21 PM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 295
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:19:21 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:20:38 PM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 295
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:20:38 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:26:53 PM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 295
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:26:53 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:36:28 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:37:03 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 16/06/2020 11:38:18 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+

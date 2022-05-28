@@ -1,0 +1,168 @@
+Time: 18/06/2020 12:32:42 AM
+-----------------------------------------------------------
+Message: ERROR [HY000] [Oracle][ODBC][Ora]ORA-12899: value too large for column "PMMAINT"."CR_LOG_COMMUNICATION"."PERSONFORUAT" (actual: 108, maximum: 50)
+ORA-06512: at "PMMAINT.SP_CR_LOG_COMMUNICATION_INSUPD", line 25
+ORA-06512: at line 1
+
+StackTrace:    at PRCR.Models.CommunicationServices.SaveCommunication(CommunicationModel model) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 433
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 171
+Source: SQORA32.DLL
+TargetSite: Int32 SaveCommunication(PRCR.Models.CommunicationModel)
+-----------------------------------------------------------
+
+Time: 18/06/2020 12:32:42 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 12:34:29 AM
+-----------------------------------------------------------
+Message: ERROR [HY000] [Oracle][ODBC][Ora]ORA-12899: value too large for column "PMMAINT"."CR_LOG_COMMUNICATION"."PERSONFORUAT" (actual: 108, maximum: 50)
+ORA-06512: at "PMMAINT.SP_CR_LOG_COMMUNICATION_INSUPD", line 25
+ORA-06512: at line 1
+
+StackTrace:    at PRCR.Models.CommunicationServices.SaveCommunication(CommunicationModel model) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 433
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 171
+Source: SQORA32.DLL
+TargetSite: Int32 SaveCommunication(PRCR.Models.CommunicationModel)
+-----------------------------------------------------------
+
+Time: 18/06/2020 12:34:29 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:23:27 AM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 323
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:23:28 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:25:52 AM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 323
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:27:23 AM
+-----------------------------------------------------------
+Message: ERROR [HY000] [Oracle][ODBC][Ora]ORA-12899: value too large for column "PMMAINT"."CR_LOG_COMMUNICATION"."CONSULTANTLEVEL" (actual: 3, maximum: 1)
+ORA-06512: at "PMMAINT.SP_CR_LOG_COMMUNICATION_INSUPD", line 25
+ORA-06512: at line 1
+
+StackTrace:    at PRCR.Models.CommunicationServices.SaveCommunication(CommunicationModel model) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 433
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 171
+Source: SQORA32.DLL
+TargetSite: Int32 SaveCommunication(PRCR.Models.CommunicationModel)
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:27:23 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:28:19 AM
+-----------------------------------------------------------
+Message: ERROR [HY000] [Oracle][ODBC][Ora]ORA-12899: value too large for column "PMMAINT"."CR_LOG_COMMUNICATION"."CONSULTANTLEVEL" (actual: 3, maximum: 1)
+ORA-06512: at "PMMAINT.SP_CR_LOG_COMMUNICATION_INSUPD", line 25
+ORA-06512: at line 1
+
+StackTrace:    at PRCR.Models.CommunicationServices.SaveCommunication(CommunicationModel model) in c:\Darshan\PRCR\PRCR\Models\Services.cs:line 433
+   at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 171
+Source: SQORA32.DLL
+TargetSite: Int32 SaveCommunication(PRCR.Models.CommunicationModel)
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:28:19 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:29:07 AM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 323
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:29:07 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:29:24 AM
+-----------------------------------------------------------
+Message: Object reference not set to an instance of an object.
+StackTrace:    at PRCR.Controllers.RequestController.SaveCommunicationAndAttachDocument(RequestModel model, HttpPostedFileBase file, String docTypeName) in c:\Darshan\PRCR\PRCR\Controllers\RequestController.cs:line 323
+Source: PRCR
+TargetSite: Boolean SaveCommunicationAndAttachDocument(PRCR.Models.RequestModel, System.Web.HttpPostedFileBase, System.String)
+-----------------------------------------------------------
+
+Time: 18/06/2020 01:29:24 AM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: PRCR
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 10:10:11 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 10:11:49 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 10:12:18 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+
+Time: 18/06/2020 10:14:39 PM
+-----------------------------------------------------------
+Message: Exception of type 'System.Exception' was thrown.
+StackTrace: 
+Source: SQORA32.DLL
+TargetSite: 
+-----------------------------------------------------------
+

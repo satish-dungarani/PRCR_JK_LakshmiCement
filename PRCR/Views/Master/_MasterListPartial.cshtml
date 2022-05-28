@@ -1,0 +1,200 @@
+﻿@using PRCR.Models;
+@model List<MasterModel>
+
+@{
+    int i = 1;
+}
+
+@if (ViewBag.Type == "LO")
+{
+    <table class="table table-bordered table-hover" style="width:100%;">
+        <thead>
+            <tr>
+                
+                <th>Action</th>
+                <th>Sr. No.</th>
+                <th>Code</th>
+                <th>Location Name</th>
+                <th>Description</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr> 
+                    <td>
+                        <a href="javascript:void(0);" onclick="funManageMaster('@ViewBag.Type',@item.LocationId)"><i class="fa fa-pencil margin"></i></a>
+                        <a href="javascript:void(0);" onclick="funDeleteMaster('location',@item.LocationId)"><i class="fa fa-trash margin"></i></a>
+                    </td>
+                    <td>@(i++)</td>
+                    <td>@item.LocationCode</td>
+                    <td>@item.LocationName</td>
+                    <td>@item.LocationDesc</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.Type == "AP")
+{
+    <table class="table table-bordered table-hover" style="width:100%;">
+        <thead>
+            <tr> <th>Action</th>
+                <th>Sr. No.</th>
+                <th>Application Name</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr> 
+                    <td>
+                        <a href="javascript:void(0);" onclick="funManageMaster('@ViewBag.Type',@item.ApplicationId)"><i class="fa fa-pencil margin"></i></a>
+                        <a href="javascript:void(0);" onclick="funDeleteMaster('application',@item.ApplicationId)"><i class="fa fa-trash margin"></i></a>
+                    </td>
+                    <td>@(i++)</td>
+                    <td>@item.ApplicationName</td>
+                    
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else if (ViewBag.Type == "MO")
+{
+    <table class="table table-bordered table-hover" style="width:100%;">
+        <thead>
+            <tr> <th>Action</th>
+                <th>Sr. No.</th>
+                <th>Application</th>
+                <th>Module</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                     
+                    <td>
+                        <a href="javascript:void(0);" onclick="funManageMaster('@ViewBag.Type',@item.ModuleId)"><i class="fa fa-pencil margin"></i></a>
+                        <a href="javascript:void(0);" onclick="funDeleteMaster('module',@item.ModuleId)"><i class="fa fa-trash margin"></i></a>
+                    </td>
+                    <td>@(i++)</td>
+                    <td>@item.ApplicationName</td>
+                    <td>@item.ModuleName</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else if (ViewBag.Type == "PR")
+{
+    <table class="table table-bordered table-hover" style="width:100%;">
+        <thead>
+            <tr> 
+                <th>Sr. No.</th>
+                <th>Priority</th>
+                @*<th>Action</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr> 
+                    <td>@(i++)</td>
+                    <td>@item.Priority</td>
+                    @*<td>
+                        <a href="javascript:void(0);" onclick="funManageMaster('@ViewBag.Type',@item.PriorityId)"><i class="fa fa-pencil margin"></i></a>
+                        <a href="#"><i class="fa fa-trash margin"></i></a>
+                    </td>*@
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else if (ViewBag.Type == "DT")
+{
+    <table class="table table-bordered table-hover" style="width:100%;">
+        <thead>
+            <tr> 
+                <th>Sr. No.</th>
+                <th>Document Type</th>
+             @*   <th>Action</th>*@
+            </tr>
+        </thead>
+        <tbody>
+             @foreach (var item in Model)
+            {
+                <tr> 
+                    <td>@(i++)</td>
+                    <td>@item.DocumentType</td>
+                    @*<td>
+                        <a href="javascript:void(0);" onclick="funManageMaster('@ViewBag.Type',@item.DocumentTypeId)"><i class="fa fa-pencil margin"></i></a>
+                        <a href="#"><i class="fa fa-trash margin"></i></a>
+                    </td>*@
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else if (ViewBag.Type == "IS")
+{
+    <table class="table table-bordered table-hover" style="width:100%;">
+        <thead>
+            <tr> 
+                <th>Sr. No.</th>
+                <th>Issue Status</th>
+                @*<th>Action</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                      
+                    <td>@(i++)</td>
+                    <td>@item.Status</td>
+                    @*<td>
+                        <a href="javascript:void(0);" onclick="funManageMaster('@ViewBag.Type',@item.StatusId)"><i class="fa fa-pencil margin"></i></a>
+                        <a href="#"><i class="fa fa-trash margin"></i></a>
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.Type == "IST")
+{
+    <table class="table table-bordered table-hover" style="width:100%;">
+        <thead>
+            <tr> 
+                <th>Action</th>
+                <th>Sr. No.</th> 
+                <th>Issue Type</th>
+                <th>Description</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr> 
+                    <td>
+                        <a href="javascript:void(0);" onclick="funManageMaster('@ViewBag.Type',@item.IssueTypeId)"><i class="fa fa-pencil margin"></i></a>
+                        <a href="javascript:void(0);" onclick="funDeleteMaster('IssueType',@item.IssueTypeId)"><i class="fa fa-trash margin"></i></a>
+                    </td>
+                    <td>@(i++)</td> 
+                    <td>@item.IssueTypeName</td>
+                    <td>@item.IssueTypeDesc</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

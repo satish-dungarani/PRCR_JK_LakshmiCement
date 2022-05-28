@@ -1,0 +1,2 @@
+1) Get Encryption and Decryption code for password from Shailesh
+2) Get Email and Sms Credential From Shailesh Or Manoj
